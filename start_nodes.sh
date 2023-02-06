@@ -32,6 +32,7 @@ function add_master_to_docker_compose(){
     export PORT=3000
     export P2PPORT=40000
     export ENVFILE=master.env
+    cp -f docker-compose.yml.tmpl docker-compose.yml
     cp body.docker-compose.yml temp.body.docker-compose.yml
     envsubst < temp.body.docker-compose.yml >> temp.docker-compose.yml
     #copy content of temp.docker-compose.yml to docker-compose.yml
