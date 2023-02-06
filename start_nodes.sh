@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+: ${TOOLS_IMAGE:=opencanarias/taple-tools:0.1}
 
 function download_tools() {
     echo "Downloading taple tools..."
@@ -104,6 +104,9 @@ for ((i=1; i<$num_nodes; i++)); do
 done
 
 add_footer_to_docker_compose
+
+echo "Removing taple-tools images..."
+docker rm -f $(docker ps -aq --filter ancestor=${TOOLS_IMAGE})
 
 echo "Node configuration finished. Please check docker-compose.yml file and .credentials.* files for your credentials."
 
