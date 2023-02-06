@@ -1,3 +1,4 @@
 *.env
 .credentials*
 docker-compose.yml
+temp-lacp-gobernance.json

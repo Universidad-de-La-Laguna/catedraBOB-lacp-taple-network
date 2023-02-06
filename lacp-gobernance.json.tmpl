@@ -1,0 +1,131 @@
+{
+    "request": {
+        "Create": {
+            "governance_id": "",
+            "namespace": "",
+            "schema_id": "governance",
+            "payload": {
+                "Json": {
+                    "members": [
+                        {
+                            "id": "AdminFinc1",
+                            "tags": {},
+                            "description": "Administrador de Fincas 1",
+                            "key": "${MASTER_ID}"
+                        },
+                        {
+                            "id": "Regis1",
+                            "tags": {},
+                            "description": "Registrador 1",
+                            "key": "${SLAVE1_ID}"
+                        },
+                        {
+                            "id": "Comunero1",
+                            "tags": {},
+                            "description": "Comunero 1",
+                            "key": "${SLAVE2_ID}"
+                        }
+                    ],
+                    "schemas": [
+                        {
+                            "id": "Test",
+                            "tags": {},
+                            "content": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                    "temperature",
+                                    "location"
+                                ],
+                                "properties": {
+                                    "temperatura": {
+                                        "type": "integer"
+                                    },
+                                    "localizacion": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "policies": [
+                        {
+                            "id": "Test",
+                            "validation": {
+                                "quorum": 0.5,
+                                "validators": [
+                                    "${MASTER_ID}",
+                                    "${SLAVE1_ID}",
+                                    "${SLAVE2_ID}"
+                                ]
+                            },
+                            "approval": {
+                                "quorum": 1,
+                                "approvers": [
+                                    "${MASTER_ID}"
+                                ]
+                            },
+                            "invokation": {
+                                "owner": {
+                                    "allowance": true,
+                                    "approvalRequired": false
+                                },
+                                "set": {
+                                    "allowance": true,
+                                    "approvalRequired": true,
+                                    "invokers": [
+                                        "${SLAVE1_ID}"
+                                    ]
+                                },
+                                "all": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                },
+                                "external": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                }
+                            }
+                        },
+                        {
+                            "id": "governance",
+                            "validation": {
+                                "quorum": 0.5,
+                                "validators": [
+                                    "${MASTER_ID}",
+                                    "${SLAVE1_ID}",
+                                    "${SLAVE2_ID}"
+                                ]
+                            },
+                            "approval": {
+                                "quorum": 1,
+                                "approvers": [
+                                    "${MASTER_ID}"
+                                ]
+                            },
+                            "invokation": {
+                                "owner": {
+                                    "allowance": true,
+                                    "approvalRequired": true
+                                },
+                                "set": {
+                                    "allowance": false,
+                                    "approvalRequired": false,
+                                    "invokers": []
+                                },
+                                "all": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                },
+                                "external": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
