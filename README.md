@@ -15,6 +15,17 @@ https://user-images.githubusercontent.com/44450566/216692392-04886180-fcb0-44b2-
 - [Git](https://git-scm.com/)
 - [Ubuntu](https://ubuntu.com/) o cualquier otra distribución de linux
 
+> En OSX, se debe tener instalado GNU sed y tenerlo por defecto.
+> Para instalar GNU sed usar:
+> ```
+> brew install gsed
+> ```
+> Para usarlo por defecto, añadir a `.bash_profile` o similar:
+> ```
+> export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+> ```
+> Para saber la ruta exacta usar `brew info gsed`
+
 ## Ejecución
 
 1. Clonar el repositorio
