@@ -41,3 +41,8 @@ chmod 777 start_nodes.sh
 ./start_nodes.sh
 ```
 
+5. Crear la gobernanza
+
+```bash
+./create_gobernance.sh
+```
