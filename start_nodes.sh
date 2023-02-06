@@ -87,6 +87,11 @@ while ! [[ $num_nodes =~ ^[0-9]+$ ]] || [ $num_nodes -lt 2 ]; do
     read num_nodes
 done
 
+echo "Removing old configuration..."
+rm -rf *.env
+rm -rf .credentials*
+rm -rf docker-compose.yml
+
 echo "Starting configuration..."
 
 download_tools
