@@ -56,7 +56,9 @@ function initialize_slave_env_variables(){
     echo "TAPLE_NETWORK_P2PPORT=4000$1" >> slave$1.env
     echo TAPLE_NETWORK_ADDR=/ip4/0.0.0.0/tcp >> slave$1.env
     echo "TAPLE_NODE_SECRETKEY="$(cat .credentials.slave$1 | grep "SLAVE_PRIVATE_KEY:" | echo $(cut -d ":" -f 2)) >> slave$1.env
-    # TODO: Cambiar ip estática por la que corresponda segun el caso 
+    # La ip 172.27.0.2 siempre es la del nodo master porque
+    # la dirección de red se fija en el docker-compose y el 
+    # nodo master es el primero en arrancar
     echo "TAPLE_NETWORK_KNOWNNODES=/ip4/172.27.0.2/tcp/40000/p2p/"$(cat .credentials.master | grep "MASTER_PEER_ID:" | echo $(cut -d ":" -f 2)) >> slave$1.env
 }
 
