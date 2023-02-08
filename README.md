@@ -70,4 +70,10 @@ chmod 777 start_nodes.sh
 ./modify-test-subject-by-owner.sh
 ```
 
+8. Modificar el sujeto tipo `Test` por alguien que no es el propietario (requiere de aprobación)
+
+```bash
+./modify-test-subject-by-other.sh
 ```
+
+> Nota: Los pasos 6, 7 y 8 se pueden repetir continuamente para crear y modificar nuevos subjects
