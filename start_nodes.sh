@@ -99,6 +99,8 @@ echo "Removing old configuration..."
 rm -rf *.env
 rm -rf .credentials*
 rm -rf docker-compose.yml
+rm temp-*.json
+rm .*_id
 
 echo "Starting configuration..."
 

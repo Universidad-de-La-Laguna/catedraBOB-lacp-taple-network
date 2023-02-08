@@ -55,5 +55,19 @@ chmod 777 start_nodes.sh
 5. Crear la gobernanza
 
 ```bash
-./create_gobernance.sh
+./create-gobernance.sh
+```
+
+6. Crear un sujeto tipo `Test`
+
+```bash
+./create-test-subject.sh
+```
+
+7. Modificar el sujeto tipo `Test` por el propietario
+
+```bash
+./modify-test-subject-by-owner.sh
+```
+
 ```

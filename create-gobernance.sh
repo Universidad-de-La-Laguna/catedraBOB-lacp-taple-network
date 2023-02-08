@@ -22,3 +22,5 @@ CREATE_GOBERNANCE_RESULT=`curl -s --location --request POST 'http://localhost:30
 GOBERNANCE_SUBJECT_ID=`jq -r .subject_id <<< $CREATE_GOBERNANCE_RESULT`
 
 echo "Gobernanza creada correctamente con subject_id: $GOBERNANCE_SUBJECT_ID"
+
+echo -n $GOBERNANCE_SUBJECT_ID > .gobernance_subject_id
