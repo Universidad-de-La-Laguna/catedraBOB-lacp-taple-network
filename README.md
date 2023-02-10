@@ -71,3 +71,9 @@ chmod 777 start_nodes.sh
 ```
 
 ```
+
+## Parada
+
+```bash
+./stop_nodes.sh
+```
