@@ -8,9 +8,9 @@ then
 fi
 
 # Sustitucion de variables
-export MASTER_ID=`cat .credentials.master | sed -n 's/^MASTER_ID: \(.*\)$/\1/p'`
-export SLAVE1_ID=`cat .credentials.slave1 | sed -n 's/^SLAVE_ID: \(.*\)$/\1/p'`
-export SLAVE2_ID=`cat .credentials.slave2 | sed -n 's/^SLAVE_ID: \(.*\)$/\1/p'`
+export NODEADMIN_CONTROLLER_ID=`cat .credentials.nodeadmin | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
+export NODEREGIS_CONTROLLER_ID=`cat .credentials.noderegis | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
+export NODEPRESI_CONTROLLER_ID=`cat .credentials.nodepresi | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
 envsubst < templates/lacp-gobernance.json.tmpl > temp-lacp-gobernance.json
 
 # Creacion de la gobernanza

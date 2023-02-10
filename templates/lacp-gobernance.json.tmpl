@@ -11,19 +11,19 @@
                             "id": "AdminFinc1",
                             "tags": {},
                             "description": "Administrador de Fincas 1",
-                            "key": "${MASTER_ID}"
+                            "key": "${NODEADMIN_CONTROLLER_ID}"
                         },
                         {
                             "id": "Regis1",
                             "tags": {},
                             "description": "Registrador 1",
-                            "key": "${SLAVE1_ID}"
+                            "key": "${NODEREGIS_CONTROLLER_ID}"
                         },
                         {
                             "id": "Comunero1",
                             "tags": {},
                             "description": "Comunero 1",
-                            "key": "${SLAVE2_ID}"
+                            "key": "${NODEPRESI_CONTROLLER_ID}"
                         }
                     ],
                     "schemas": [
@@ -54,15 +54,15 @@
                             "validation": {
                                 "quorum": 0.5,
                                 "validators": [
-                                    "${MASTER_ID}",
-                                    "${SLAVE1_ID}",
-                                    "${SLAVE2_ID}"
+                                    "${NODEADMIN_CONTROLLER_ID}",
+                                    "${NODEREGIS_CONTROLLER_ID}",
+                                    "${NODEPRESI_CONTROLLER_ID}"
                                 ]
                             },
                             "approval": {
                                 "quorum": 1,
                                 "approvers": [
-                                    "${SLAVE2_ID}"
+                                    "${NODEPRESI_CONTROLLER_ID}"
                                 ]
                             },
                             "invokation": {
@@ -74,7 +74,7 @@
                                     "allowance": true,
                                     "approvalRequired": true,
                                     "invokers": [
-                                        "${SLAVE1_ID}"
+                                        "${NODEREGIS_CONTROLLER_ID}"
                                     ]
                                 },
                                 "all": {
@@ -92,17 +92,17 @@
                             "validation": {
                                 "quorum": 0.5,
                                 "validators": [
-                                    "${MASTER_ID}",
-                                    "${SLAVE1_ID}",
-                                    "${SLAVE2_ID}"
+                                    "${NODEADMIN_CONTROLLER_ID}",
+                                    "${NODEREGIS_CONTROLLER_ID}",
+                                    "${NODEPRESI_CONTROLLER_ID}"
                                 ]
                             },
                             "approval": {
                                 "quorum": 0.5,
                                 "approvers": [
-                                    "${MASTER_ID}",
-                                    "${SLAVE1_ID}",
-                                    "${SLAVE2_ID}"
+                                    "${NODEADMIN_CONTROLLER_ID}",
+                                    "${NODEREGIS_CONTROLLER_ID}",
+                                    "${NODEPRESI_CONTROLLER_ID}"
                                 ]
                             },
                             "invokation": {
