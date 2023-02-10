@@ -87,8 +87,12 @@ function add_footer_to_docker_compose(){
 }
 
    
-echo "How many nodes do you want to initialize? Must be more than 1. First #node is always the master."
-read num_nodes
+# echo "How many nodes do you want to initialize? Must be more than 1. First #node is always the master."
+# read num_nodes
+
+# Fijamos el arranqe de una red de 3 nodos (administrador, registrador y presidente)
+num_nodes=3
+
 #validate input is a number and is more than 1
 while ! [[ $num_nodes =~ ^[0-9]+$ ]] || [ $num_nodes -lt 2 ]; do
     echo "Invalid input. Please enter a number greater than 1."
