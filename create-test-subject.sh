@@ -3,7 +3,7 @@
 export GOBERNANCE_SUBJECT_ID=`cat .gobernance_subject_id`
 export TEST_SUBJECT_LOCATION="Spain"
 
-envsubst < create-test-subject.json.tmpl > temp-create-test-subject.json
+envsubst < templates/create-test-subject.json.tmpl > temp-create-test-subject.json
 
 TEST_SUBJECT=`curl --silent --location --request POST 'http://localhost:3000/api/requests' \
 --header 'X-API-KEY: 1234' \

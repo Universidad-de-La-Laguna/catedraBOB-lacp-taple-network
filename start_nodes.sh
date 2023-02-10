@@ -32,8 +32,8 @@ function add_master_to_docker_compose(){
     export PORT=3000
     export P2PPORT=40000
     export ENVFILE=master.env
-    cp -f docker-compose.yml.tmpl docker-compose.yml
-    cp body.docker-compose.yml temp.body.docker-compose.yml
+    cp -f templates/docker-compose.yml.tmpl docker-compose.yml
+    cp templates/body.docker-compose.yml.tmpl temp.body.docker-compose.yml
     envsubst < temp.body.docker-compose.yml >> temp.docker-compose.yml
     #copy content of temp.docker-compose.yml to docker-compose.yml
     cat temp.docker-compose.yml >> docker-compose.yml
@@ -68,7 +68,7 @@ function add_slave_to_docker_compose(){
     export PORT=300$1
     export P2PPORT=4000$1
     export ENVFILE=slave$1.env
-    cp body.docker-compose.yml temp.body.docker-compose.yml
+    cp templates/body.docker-compose.yml.tmpl temp.body.docker-compose.yml
     envsubst < temp.body.docker-compose.yml >> temp.docker-compose.yml
     #copy content of temp.docker-compose.yml to docker-compose.yml
     cat temp.docker-compose.yml >> docker-compose.yml
@@ -83,7 +83,7 @@ function add_slave_to_docker_compose(){
 
 function add_footer_to_docker_compose(){
     echo "Adding footer to docker-compose.yml..."
-    cat footer.docker-compose.yml >> docker-compose.yml
+    cat templates/footer.docker-compose.yml.tmpl >> docker-compose.yml
 }
 
    
