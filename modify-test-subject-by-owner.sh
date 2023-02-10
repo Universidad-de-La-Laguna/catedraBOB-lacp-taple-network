@@ -22,4 +22,6 @@ APPROVAL=`curl --silent --location --request PUT "http://localhost:3002/api/appr
     "approvalType": "Accept"
 }'`
 
-echo "Peticion aprobada y subject modificado"
+echo "Approve result: $APPROVAL"
+
+[[ $APPROVAL == "null" ]] && echo "Peticion aprobada y subject modificado" || echo "Error al aprobar la solicitud de modificacion el sujeto"
