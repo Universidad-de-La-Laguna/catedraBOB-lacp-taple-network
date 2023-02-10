@@ -120,15 +120,6 @@ docker rm -f $(docker ps -aq --filter ancestor=${TOOLS_IMAGE})
 
 echo "Node configuration finished. Please check docker-compose.yml file and .credentials.* files for your credentials."
 
-#Do you want to start the nodes now? (y/n)
-echo "Do you want to start the nodes now? (y/n)"
-read start_nodes
-while ! [[ $start_nodes =~ ^[yYnN]$ ]]; do
-    echo "Invalid input. Please enter y or n."
-    read start_nodes
-done
-
-if [[ $start_nodes =~ ^[yY]$ ]]; then
-    echo "Starting nodes..."
-    docker-compose up -d
-fi
+# Start nodes
+echo "Starting nodes..."
+docker-compose up -d
