@@ -2,9 +2,8 @@
 
 : ${TOOLS_IMAGE:=opencanarias/taple-tools:0.1}
 
-# Fijamos el arranqe de una red de 3 nodos (administrador, registrador y presidente)
-num_nodes=3
-node_name=('nodeadmin' 'noderegis' 'nodepresi')
+# Cargamos la descripcion de los nodos
+source nodes_definition
 
 function download_tools() {
     echo "Downloading taple tools..."
@@ -13,7 +12,7 @@ function download_tools() {
     chmod +x ./taple-tools/scripts/taple-sign
 }
 
-function initialize_nodeadmin_env_variables(){
+function initialize_firstnode_env_variables(){
     echo "Initializing ${node_name[0]} environment variables..."
     ./taple-tools/scripts/taple-keygen ed25519 > temp_variables.txt
     sed -i '1d' temp_variables.txt
@@ -30,7 +29,7 @@ function initialize_nodeadmin_env_variables(){
     echo "TAPLE_NODE_SECRETKEY="$(cat .credentials.${node_name[0]} | grep "PRIVATE_KEY:" | echo $(cut -d ":" -f 2)) >> ${node_name[0]}.env
 }
 
-function add_nodeadmin_to_docker_compose(){
+function add_firstnode_to_docker_compose(){
     echo "Adding ${node_name[0]} node to docker-compose.yml..."
     export SERVICENAME=${node_name[0]}
     export PORT=3000
@@ -60,9 +59,9 @@ function initialize_node_env_variables(){
     echo "TAPLE_NETWORK_P2PPORT=4000$1" >> ${node_name[$1]}.env
     echo TAPLE_NETWORK_ADDR=/ip4/0.0.0.0/tcp >> ${node_name[$1]}.env
     echo "TAPLE_NODE_SECRETKEY="$(cat .credentials.${node_name[$1]} | grep "PRIVATE_KEY:" | echo $(cut -d ":" -f 2)) >> ${node_name[$1]}.env
-    # La ip 172.27.0.2 siempre es la del nodo nodeadmin porque
+    # La ip 172.27.0.2 siempre es la del nodo firstnode porque
     # la dirección de red se fija en el docker-compose y el 
-    # nodo nodeadmin es el primero en arrancar
+    # nodo firstnode es el primero en arrancar
     echo "TAPLE_NETWORK_KNOWNNODES=/ip4/172.27.0.2/tcp/40000/p2p/"$(cat .credentials."${node_name[0]}" | grep "PEER_ID:" | echo $(cut -d ":" -f 2)) >> ${node_name[$1]}.env
 }
 
@@ -77,7 +76,7 @@ function add_node_to_docker_compose(){
     #copy content of temp.docker-compose.yml to docker-compose.yml
     cat temp.docker-compose.yml >> docker-compose.yml
 
-    # Incluir dependencia de nodo nodeadmin
+    # Incluir dependencia de nodo firstnode
     echo "    depends_on:" >> docker-compose.yml
     echo "      - ${node_name[0]}" >> docker-compose.yml
 
@@ -100,8 +99,8 @@ rm .*_id
 echo "Starting configuration..."
 
 download_tools
-initialize_nodeadmin_env_variables
-add_nodeadmin_to_docker_compose
+initialize_firstnode_env_variables
+add_firstnode_to_docker_compose
 
 for ((i=1; i<$num_nodes; i++)); do
     initialize_node_env_variables $i 

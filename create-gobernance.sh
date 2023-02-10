@@ -7,10 +7,13 @@ then
     exit
 fi
 
+# Cargamos la descripcion de los nodos
+source nodes_definition
+
 # Sustitucion de variables
-export NODEADMIN_CONTROLLER_ID=`cat .credentials.nodeadmin | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
-export NODEREGIS_CONTROLLER_ID=`cat .credentials.noderegis | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
-export NODEPRESI_CONTROLLER_ID=`cat .credentials.nodepresi | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
+export NODEADMIN_CONTROLLER_ID=`cat .credentials.${node_name[0]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
+export NODEREGIS_CONTROLLER_ID=`cat .credentials.${node_name[1]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
+export NODEPRESI_CONTROLLER_ID=`cat .credentials.${node_name[2]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
 envsubst < templates/lacp-gobernance.json.tmpl > temp-lacp-gobernance.json
 
 # Creacion de la gobernanza
