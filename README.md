@@ -49,6 +49,12 @@ cd catedraBOB-lacp-taple-network
 ./modify-test-subject-by-owner.sh
 ```
 
+7. Modificar el sujeto tipo `Test` por alguien diferente al propietario
+
+```bash
+./modify-test-subject-by-other.sh
+```
+
 ## Parada
 
 ```bash
