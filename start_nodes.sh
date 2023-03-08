@@ -17,6 +17,7 @@ function initialize_firstnode_env_variables(){
     ./taple-tools/scripts/taple-keygen ed25519 > temp_variables.txt
     sed -i '1d' temp_variables.txt
     sed -i '1d' temp_variables.txt
+    sed -i '1d' temp_variables.txt
     sed -i '1s/.*:/PRIVATE_KEY:/' temp_variables.txt
     sed -i '2s/.*:/CONTROLLER_ID:/' temp_variables.txt
     sed -i '3s/.*:/PEER_ID:/' temp_variables.txt
@@ -47,6 +48,7 @@ function add_firstnode_to_docker_compose(){
 function initialize_node_env_variables(){
     echo "initializing ${node_name[$1]} environment variables..."
     ./taple-tools/scripts/taple-keygen ed25519 > temp_variables.txt
+    sed -i '1d' temp_variables.txt
     sed -i '1d' temp_variables.txt
     sed -i '1d' temp_variables.txt
     sed -i '1s/.*:/PRIVATE_KEY:/' temp_variables.txt
