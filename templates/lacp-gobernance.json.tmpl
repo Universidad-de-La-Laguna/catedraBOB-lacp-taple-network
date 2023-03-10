@@ -28,35 +28,211 @@
                     ],
                     "schemas": [
                         {
-                            "id": "Test",
+                            "id": "LACP",
                             "tags": {},
                             "content": {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "required": [
-                                    "temperature",
-                                    "location"
-                                ],
+                                "type": "object",                                
                                 "properties": {
-                                    "temperature": {
+                                    "lacp_id": {
                                         "type": "integer"
                                     },
-                                    "location": {
+                                    "community_name": {
                                         "type": "string"
+                                    },
+                                    "community_address": {
+                                        "type": "string"
+                                    },
+                                    "president_name": {
+                                        "type": "string"
+                                    },
+                                    "president_contact": {
+                                        "type": "string"
+                                    },
+                                    "admin_name": {
+                                        "type": "string"
+                                    },
+                                    "admin_contact": {
+                                        "type": "string"
+                                    },
+                                    "diligence_id": {
+                                        "type": "integer"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "lacp_id",
+                                    "community_name",
+                                    "community_address",
+                                    "president_name",
+                                    "president_contact",
+                                    "admin_name",
+                                    "admin_contact"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        {
+                            "id": "Diligence",
+                            "tags": {},
+                            "content": {
+                                "type": "object",                                
+                                "properties": {
+                                    "diligence_id": {
+                                        "type": "integer"
+                                    },
+                                    "expedition_date": {
+                                        "type": "string"
+                                    },
+                                    "lacp_size": {
+                                        "type": "integer"
+                                    },
+                                    "registrator_name": {
+                                        "type": "string"
+                                    },
+                                    "registrator_address": {
+                                        "type": "string"
+                                    },
+                                    "lacp_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "diligence_id",
+                                    "expedition_date",
+                                    "lacp_size",
+                                    "registrator_name",
+                                    "registrator_address",
+                                    "lacp_id"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        {
+                            "id": "Record",
+                            "tags": {},
+                            "content": {
+                                "type": "object",                                
+                                "properties": {
+                                    "record_id": {
+                                        "type": "integer"
+                                    },
+                                    "record_name": {
+                                        "type": "string"
+                                    },
+                                    "record_date": {
+                                        "type": "string"
+                                    },
+                                    "record_place": {
+                                        "type": "string"
+                                    },
+                                    "assistants": {
+                                        "type": "string"
+                                    },
+                                    "abstents": {
+                                        "type": "string"
+                                    },
+                                    "record_content": {
+                                        "type": "string"
+                                    },
+                                    "lacp_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "record_id",
+                                    "record_name",
+                                    "record_date",
+                                    "record_place",
+                                    "assistants",
+                                    "abstents",
+                                    "record_content",
+                                    "lacp_id"
+                                ],
+                                "additionalProperties": false
                             }
                         }
                     ],
                     "policies": [
                         {
-                            "id": "Test",
+                            "id": "LACP",
                             "validation": {
-                                "quorum": 0.5,
+                                "quorum": 1,
                                 "validators": [
-                                    "${NODEADMIN_CONTROLLER_ID}",
-                                    "${NODEREGIS_CONTROLLER_ID}",
+                                    "${NODEREGIS_CONTROLLER_ID}"
                                     "${NODEPRESI_CONTROLLER_ID}"
+                                    "${NODEADMIN_CONTROLLER_ID}"
+                                ]
+                            },
+                            "approval": {
+                                "quorum": 1,
+                                "approvers": [
+                                    "${NODEREGIS_CONTROLLER_ID}"
+                                ]
+                            },
+                            "invokation": {
+                                "owner": {
+                                    "allowance": true,
+                                    "approvalRequired": true
+                                },
+                                "set": {
+                                    "allowance": true,
+                                    "approvalRequired": false,
+                                    "invokers": [
+                                        "${NODEREGIS_CONTROLLER_ID}"
+                                    ]
+                                },
+                                "all": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                },
+                                "external": {
+                                    "allowance": false,
+                                    "approvalRequired": false,
+                                    "invokers": [
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "id": "Diligence",
+                            "validation": {
+                                "quorum": 1,
+                                "validators": [
+                                    "${NODEREGIS_CONTROLLER_ID}"
+                                    "${NODEPRESI_CONTROLLER_ID}"
+                                    "${NODEADMIN_CONTROLLER_ID}"
+                                ]
+                            },
+                            "approval": {
+                                "quorum": 1,
+                                "approvers": []
+                            },
+                            "invokation": {
+                                "owner": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                },
+                                "set": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                },
+                                "all": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                },
+                                "external": {
+                                    "allowance": false,
+                                    "approvalRequired": false
+                                }
+                            }
+                        },
+                        {
+                            "id": "Record",
+                            "validation": {
+                                "quorum": 1,
+                                "validators": [
+                                    "${NODEREGIS_CONTROLLER_ID}"
+                                    "${NODEPRESI_CONTROLLER_ID}"
+                                    "${NODEADMIN_CONTROLLER_ID}"
                                 ]
                             },
                             "approval": {
@@ -71,11 +247,8 @@
                                     "approvalRequired": true
                                 },
                                 "set": {
-                                    "allowance": true,
-                                    "approvalRequired": true,
-                                    "invokers": [
-                                        "${NODEREGIS_CONTROLLER_ID}"
-                                    ]
+                                    "allowance": false,
+                                    "approvalRequired": false
                                 },
                                 "all": {
                                     "allowance": false,
@@ -126,6 +299,7 @@
                             }
                         }
                     ]
+                    
                 }
             }
         }

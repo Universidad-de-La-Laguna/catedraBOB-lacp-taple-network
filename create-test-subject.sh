@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export GOBERNANCE_SUBJECT_ID=`cat .gobernance_subject_id`
-export TEST_SUBJECT_LOCATION="Spain"
 
 envsubst < templates/create-test-subject.json.tmpl > temp-create-test-subject.json
 
