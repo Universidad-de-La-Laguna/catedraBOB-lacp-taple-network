@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # E registrador solicita un cambio del sujeto "LACP" al nodo administrador
 # La política indica que si el que invoca es el registrador, el cambio no necesita aprobación
@@ -14,7 +15,7 @@ export NODEREGIS_PRIVATE_KEY=`cat .credentials.${node_name[1]} | sed -n 's/^PRIV
 echo $NODEREGIS_PRIVATE_KEY
 
 # El registrador firma la solicitud de modificacion del sujeto
-REQUEST_TO_SIGN="{\"subject_id\":\"$LACP_ID\",\"payload\":{\"Json\":{\"lacp_id\":1,\"community_name\":\"Edif. Atlántico\", \"community_address\":\"Avenida Atlántico\", \"president_name\":\"NombrePresi\", \"president_contact\":\"ContactoPresi@gmail.com\", \"admin_name\":\"NombreAdmin\", \"admin_contact\":\"ContactoAdmin@gmail.com\", \"diligence_id\": 1}}}"
+REQUEST_TO_SIGN="{\"subject_id\":\"$LACP_ID\",\"payload\":{\"Json\":{\"lacp_id\":1,\"community_name\":\"Edif.%20Atl%C3%A1ntico\",\"community_address\":\"Avenida%20Atl%C3%A1ntico\",\"president_name\":\"NombrePresi\",\"president_contact\":\"ContactoPresi%40gmail.com\",\"admin_name\":\"NombreAdmin\",\"admin_contact\":\"ContactoAdmin%40gmail.com\",\"diligence_id\":1}}}"
 
 
 ./taple-tools/scripts/taple-sign $NODEREGIS_PRIVATE_KEY "$REQUEST_TO_SIGN" > temp-modify-lacp-signed.json
