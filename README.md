@@ -25,7 +25,7 @@ git clone https://github.com/Universidad-de-La-Laguna/catedraBOB-lacp-taple-netw
 cd catedraBOB-lacp-taple-network
 ```
 
-3. Ejecutar el script, y responder a la terminal interactiva
+3. Ejecutar el script de inicialización de nodos (tras haber iniciado Docker), y responder a la terminal interactiva
 
 ```bash
 ./start_nodes.sh
@@ -45,18 +45,17 @@ cd catedraBOB-lacp-taple-network
 ./create-record.sh
 ```
 
-6. Modificar el sujeto tipo `LACP` por alguien diferente al propietario (el registrador)
+6. Modificar el sujeto tipo `LACP` por alguien diferente al propietario, sin confirmación.
 ```bash
-./modify-test-subject-by-other.sh
+./modify-lacp-by-other.sh
 ```
 
-7. Aprobar la modificación del sujeto `Record` por alguien diferente al propietario (el administrador)
-
+7. Modificar el sujeto `Record`por el propietario y aprobar la modificación por alguien diferente.
 ```bash
-./ NO IMPLEMENTADO
+./modify-record-by-owner.sh
 ```
 
-## Parada
+## Parada   
 
 ```bash
 ./stop_nodes.sh
