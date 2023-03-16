@@ -19,6 +19,11 @@ REQUEST_TO_SIGN="{\"subject_id\":\"$LACP_ID\",\"payload\":{\"Json\":{\"lacp_id\"
 
 
 ./taple-tools/scripts/taple-sign $NODEREGIS_PRIVATE_KEY "$REQUEST_TO_SIGN" > temp-modify-lacp-signed.json
+sed -i '1d' temp-modify-lacp-signed.json
+sed -i '1d' temp-modify-lacp-signed.json
+sed -i '1d' temp-modify-lacp-signed.json
+
+
 
 echo "Enviando solicitud de cambio a nodo ${node_name[0]}"
 
@@ -33,14 +38,14 @@ MODIFY_LACP_SUBJECT_REQUEST_ID=`jq -r .request_id <<< $MODIFY_LACP_SUBJECT_REQUE
 
 # ---------------------------------------------------------
 
-echo "Aprobando la petición con request_id $MODIFY_LACP_SUBJECT_REQUEST_ID"
+#echo "Aprobando la petición con request_id $MODIFY_LACP_SUBJECT_REQUEST_ID"
 
-APPROVAL=`curl --silent --location --request PUT "http://localhost:3002/api/approvals/$MODIFY_LACP_SUBJECT_REQUEST_ID" \
---header 'Content-Type: application/json' \
---data-raw '{
-    "approvalType": "Accept"
-}'`
+#APPROVAL=`curl --silent --location --request PUT "http://localhost:3002/api/approvals/$MODIFY_LACP_SUBJECT_REQUEST_ID" \
+#--header 'Content-Type: application/json' \
+#--data-raw '{
+#    "approvalType": "Accept"
+#}'`
 
-echo "Approve result: $APPROVAL"
+#echo "Approve result: $APPROVAL"
 
-[[ $APPROVAL == "null" ]] && echo "Peticion aprobada y subject modificado" || echo "Error al aprobar la solicitud de modificacion el sujeto"
+#[[ $APPROVAL == "null" ]] && echo "Peticion aprobada y subject modificado" || echo "Error al aprobar la solicitud de modificacion el sujeto"
