@@ -37,22 +37,23 @@ cd catedraBOB-lacp-taple-network
 ./create-gobernance.sh
 ```
 
-5. Crear un sujeto tipo `Test`
+5. Crear los sujetos de la red: `LACP` , `Diligence` y `Record`
 
 ```bash
-./create-test-subject.sh
+./create-lacp.sh
+./create-diligence.sh
+./create-record.sh
 ```
 
-6. Modificar el sujeto tipo `Test` por el propietario
-
-```bash
-./modify-test-subject-by-owner.sh
-```
-
-7. Modificar el sujeto tipo `Test` por alguien diferente al propietario
-
+6. Modificar el sujeto tipo `LACP` por alguien diferente al propietario (el registrador)
 ```bash
 ./modify-test-subject-by-other.sh
+```
+
+7. Aprobar la modificación del sujeto `Record` por alguien diferente al propietario (el administrador)
+
+```bash
+./ NO IMPLEMENTADO
 ```
 
 ## Parada
