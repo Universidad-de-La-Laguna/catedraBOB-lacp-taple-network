@@ -64,7 +64,15 @@ cd catedraBOB-lacp-taple-network
 ## Documentación
 
 ### Estructuras de datos
-`LACP`. 
+`LACP`. Modela el Libro de Actas de la Comunidad de Propietarios.
+- lacp_id: Identificador interno.
+- community_name: Nombre de la comunidad.
+- community_address: Dirección de la comunidad.
+- president_name: Nombre del presidente de la comunidad.
+- president_contact: Contacto del presidente.
+- secretary_name: Nombre del secretario de la comunidad.
+- secretary_contact: Contacto del secretario.
+- diligence_id: Referencia al identificador de la diligencia asociada al LACP.
 
 `Diligence`. Modela la diligencia asociada a un LACP. 
 - diligence_id: Identificador interno.
