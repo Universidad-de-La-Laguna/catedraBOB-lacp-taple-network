@@ -1,339 +1,340 @@
-{
-    "request": {
-        "Create": {
-            "governance_id": "",
-            "namespace": "",
-            "schema_id": "governance",
-            "payload": {
-                "Json": {
-                    "members": [
-                        {
-                            "id": "Secretary",
-                            "tags": {},
-                            "description": "Secretario / Admin. Fincas de la Comunidad",
-                            "key": "${SECRETARY_NODE_CONTROLLER_ID}"
-                        },
-                        {
-                            "id": "Registrar",
-                            "tags": {},
-                            "description": "Registrador de la Propiedad",
-                            "key": "${REGISTRAR_NODE_CONTROLLER_ID}"
-                        },
-                        {
-                            "id": "President",
-                            "tags": {},
-                            "description": "Presidente (comunero que además aprueba actas)",
-                            "key": "${PRESIDENT_NODE_CONTROLLER_ID}"
-                        }
-                    ],
-                    "schemas": [
-                        {
-                            "id": "LACP",
-                            "tags": {},
-                            "content": {
-                                "type": "object",                                
-                                "properties": {
-                                    "lacp_id": {
-                                        "type": "integer"
-                                    },
-                                    "community_name": {
-                                        "type": "string"
-                                    },
-                                    "community_address": {
-                                        "type": "string"
-                                    },
-                                    "president_name": {
-                                        "type": "string"
-                                    },
-                                    "president_contact": {
-                                        "type": "string"
-                                    },
-                                    "admin_name": {
-                                        "type": "string"
-                                    },
-                                    "admin_contact": {
-                                        "type": "string"
-                                    },
-                                    "diligence_id": {
-                                        "type": "integer"
-                                    }
-                                },
-                                "required": [
-                                    "lacp_id",
-                                    "community_name",
-                                    "community_address",
-                                    "president_name",
-                                    "president_contact",
-                                    "admin_name",
-                                    "admin_contact"
-                                ],
-                                "additionalProperties": false
-                            }
-                        },
-                        {
-                            "id": "Diligence",
-                            "tags": {},
-                            "content": {
-                                "type": "object",                                
-                                "properties": {
-                                    "diligence_id": {
-                                        "type": "integer"
-                                    },
-                                    land_registry_property_number: {
-                                        "type": "string"
-                                    },
-                                    CRU: {
-                                        "type": "integer"
-                                    },
-                                    inscription: {
-                                        "type": "integer"
-                                    }
-                                    "expedition_date": {
-                                        "type": "string"
-                                    },
-                                    "registrar_name": {
-                                        "type": "string"
-                                    },
-                                    "registrar_area": {
-                                        "type": "string"
-                                    },
-                                    "observations": {
-                                        "type": "string"
-                                    },
-                                    "lacp_size": {
-                                        "type": "integer"
-                                    },
-                                    "lacp_id": {
-                                        "type": "integer"
-                                    }
-                                },
-                                "required": [
-                                    "diligence_id",
-                                    "land_registry_property_number",
-                                    "CRU",
-                                    "inscription",
-                                    "expedition_date",
-                                    "lacp_size",
-                                    "registrar_name",
-                                    "registrar_area",
-                                    "lacp_id"
-                                ],
-                                "additionalProperties": false
-                            }
-                        },
-                        {
-                            "id": "Record",
-                            "tags": {},
-                            "content": {
-                                "type": "object",                                
-                                "properties": {
-                                    "record_id": {
-                                        "type": "integer"
-                                    },
-                                    "record_name": {
-                                        "type": "string"
-                                    },
-                                    "record_start_date_time": {
-                                        "type": "string"
-                                    },
-                                    "record_end_date_time": {
-                                        "type": "string"
-                                    },
-                                    "record_type": {
-                                        "type": "string"
-                                        "enum": ["ORDINARY", "EXTRAORDINARY"]
-                                    },
-                                    "record_president": {
-                                        "type": "string"
-                                    },
-                                    "record_secretary": {
-                                        "type": "string"
-                                    },
-                                    "record_place": {
-                                        "type": "string"
-                                    },
-                                    "assistants": {
-                                        "type": "string"
-                                    },
-                                    "body": {
-                                        "type": "string"
-                                    }
-                                    "status": {
-                                        "type": "string"
-                                        "enum": ["PENDING", "APPROVED", "DENIED"]
-                                    },
-                                    "lacp_id": {
-                                        "type": "integer"
-                                    }
-                                },
-                                "required": [
-                                    "record_id",
-                                    "record_name",
-                                    "record_start_date_time",
-                                    "record_end_date_time",
-                                    "record_place",
-                                    "assistants",
-                                    "body",
-                                    "lacp_id",
-                                    "status"
-                                ],
-                                "additionalProperties": false
-                            }
-                        }
-                    ],
-                    "policies": [
-                        {
-                            "id": "LACP",
-                            "validation": {
-                                "quorum": 1,
-                                "validators": [
-                                    "${NODEREGIS_CONTROLLER_ID}",
-                                    "${NODEPRESI_CONTROLLER_ID}",
-                                    "${NODEADMIN_CONTROLLER_ID}"
-                                ]
+    {
+        "request": {
+            "Create": {
+                "governance_id": "",
+                "namespace": "",
+                "schema_id": "governance",
+                "payload": {
+                    "Json": {
+                        "members": [
+                            {
+                                "id": "Secretary",
+                                "tags": {},
+                                "description": "Secretario o Admin Fincas de la Comunidad",
+                                "key": "${SECRETARY_NODE_CONTROLLER_ID}"
                             },
-                            "approval": {
-                                "quorum": 1,
-                                "approvers": [
-                                    "${NODEREGIS_CONTROLLER_ID}"
-                                ]
+                            {
+                                "id": "Registrar",
+                                "tags": {},
+                                "description": "Registrador de la Propiedad",
+                                "key": "${REGISTRAR_NODE_CONTROLLER_ID}"
                             },
-                            "invokation": {
-                                "owner": {
-                                    "allowance": true,
-                                    "approvalRequired": true
-                                },
-                                "set": {
-                                    "allowance": true,
-                                    "approvalRequired": false,
-                                    "invokers": [
-                                        "${NODEREGIS_CONTROLLER_ID}"
+                            {
+                                "id": "President",
+                                "tags": {},
+                                "description": "Presidente de la comunidad",
+                                "key": "${PRESIDENT_NODE_CONTROLLER_ID}"
+                            }
+                        ],
+                        "schemas": [
+                            {
+                                "id": "LACP",
+                                "tags": {},
+                                "content": {
+                                    "type": "object",                                
+                                    "properties": {
+                                        "lacp_id": {
+                                            "type": "integer"
+                                        },
+                                        "community_name": {
+                                            "type": "string"
+                                        },
+                                        "community_address": {
+                                            "type": "string"
+                                        },
+                                        "president_name": {
+                                            "type": "string"
+                                        },
+                                        "president_contact": {
+                                            "type": "string"
+                                        },
+                                        "admin_name": {
+                                            "type": "string"
+                                        },
+                                        "admin_contact": {
+                                            "type": "string"
+                                        },
+                                        "diligence_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [
+                                        "lacp_id",
+                                        "community_name",
+                                        "community_address",
+                                        "president_name",
+                                        "president_contact",
+                                        "admin_name",
+                                        "admin_contact"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            },
+                            {
+                                "id": "Diligence",
+                                "tags": {},
+                                "content": {
+                                    "type": "object",                                
+                                    "properties": {
+                                        "diligence_id": {
+                                            "type": "integer"
+                                        },
+                                        "land_registry_property_number": {
+                                            "type": "string"
+                                        },
+                                        "CRU": {
+                                            "type": "integer"
+                                        },
+                                        "inscription": {
+                                            "type": "integer"
+                                        },
+                                        "expedition_date": {
+                                            "type": "string"
+                                        },
+                                        "registrar_name": {
+                                            "type": "string"
+                                        },
+                                        "registrar_area": {
+                                            "type": "string"
+                                        },
+                                        "observations": {
+                                            "type": "string"
+                                        },
+                                        "lacp_size": {
+                                            "type": "integer"
+                                        },
+                                        "lacp_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [
+                                        "diligence_id",
+                                        "land_registry_property_number",
+                                        "CRU",
+                                        "inscription",
+                                        "expedition_date",
+                                        "registrar_name",
+                                        "registrar_area",
+                                        "lacp_size",
+                                        "lacp_id"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            },
+                            {
+                                "id": "Record",
+                                "tags": {},
+                                "content": {
+                                    "type": "object",                                
+                                    "properties": {
+                                        "record_id": {
+                                            "type": "integer"
+                                        },
+                                        "record_name": {
+                                            "type": "string"
+                                        },
+                                        "record_start_date_time": {
+                                            "type": "string"
+                                        },
+                                        "record_end_date_time": {
+                                            "type": "string"
+                                        },
+                                        "record_type": {
+                                            "type": "string",
+                                            "enum": ["ORDINARY", "EXTRAORDINARY"]
+                                        },
+                                        "record_president": {
+                                            "type": "string"
+                                        },
+                                        "record_secretary": {
+                                            "type": "string"
+                                        },
+                                        "record_place": {
+                                            "type": "string"
+                                        },
+                                        "assistants": {
+                                            "type": "string"
+                                        },
+                                        "body": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "enum": ["PENDING", "APPROVED", "DENIED"]
+                                        },
+                                        "lacp_id": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "required": [
+                                        "record_id",
+                                        "record_name",
+                                        "record_start_date_time",
+                                        "record_end_date_time",
+                                        "record_type",
+                                        "record_place",
+                                        "assistants",
+                                        "body",
+                                        "status",
+                                        "lacp_id",
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        ],
+                        "policies": [
+                            {
+                                "id": "LACP",
+                                "validation": {
+                                    "quorum": 1,
+                                    "validators": [
+                                        "${REGISTRAR_NODE_CONTROLLER_ID}",
+                                        "${PRESIDENT_NODE_CONTROLLER_ID}",
+                                        "${SECRETARY_NODE_CONTROLLER_ID}"
                                     ]
                                 },
-                                "all": {
-                                    "allowance": false,
-                                    "approvalRequired": false
-                                },
-                                "external": {
-                                    "allowance": false,
-                                    "approvalRequired": false
-                                }
-                            }
-                        },
-                        {
-                            "id": "Diligence",
-                            "validation": {
-                                "quorum": 1,
-                                "validators": [
-                                    "${NODEREGIS_CONTROLLER_ID}",
-                                    "${NODEPRESI_CONTROLLER_ID}",
-                                    "${NODEADMIN_CONTROLLER_ID}"
-                                ]
-                            },
-                            "approval": {
-                                "quorum": 1,
-                                "approvers": []
-                            },
-                            "invokation": {
-                                "owner": {
-                                    "allowance": false,
-                                    "approvalRequired": false
-                                },
-                                "set": {
-                                    "allowance": false,
-                                    "approvalRequired": false,
-                                    "invokers": [
+                                "approval": {
+                                    "quorum": 1,
+                                    "approvers": [
+                                        "${REGISTRAR_NODE_CONTROLLER_ID}"
                                     ]
                                 },
-                                "all": {
-                                    "allowance": false,
-                                    "approvalRequired": false
-                                },
-                                "external": {
-                                    "allowance": false,
-                                    "approvalRequired": false
+                                "invokation": {
+                                    "owner": {
+                                        "allowance": true,
+                                        "approvalRequired": true
+                                    },
+                                    "set": {
+                                        "allowance": true,
+                                        "approvalRequired": false,
+                                        "invokers": [
+                                            "${REGISTRAR_NODE_CONTROLLER_ID}"
+                                        ]
+                                    },
+                                    "all": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    },
+                                    "external": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    }
                                 }
-                            }
-                        },
-                        {
-                            "id": "Record",
-                            "validation": {
-                                "quorum": 1,
-                                "validators": [
-                                    "${NODEREGIS_CONTROLLER_ID}",
-                                    "${NODEPRESI_CONTROLLER_ID}",
-                                    "${NODEADMIN_CONTROLLER_ID}"
-                                ]
                             },
-                            "approval": {
-                                "quorum": 1,
-                                "approvers": [
-                                    "${NODEPRESI_CONTROLLER_ID}"
-                                ]
-                            },
-                            "invokation": {
-                                "owner": {
-                                    "allowance": true,
-                                    "approvalRequired": true
-                                },
-                                "set": {
-                                    "allowance": false,
-                                    "approvalRequired": false,
-                                    "invokers": [
+                            {
+                                "id": "Diligence",
+                                "validation": {
+                                    "quorum": 1,
+                                    "validators": [
+                                        "${REGISTRAR_NODE_CONTROLLER_ID}",
+                                        "${PRESIDENT_NODE_CONTROLLER_ID}",
+                                        "${SECRETARY_NODE_CONTROLLER_ID}"
                                     ]
                                 },
-                                "all": {
-                                    "allowance": false,
-                                    "approvalRequired": false
+                                "approval": {
+                                    "quorum": 1,
+                                    "approvers": []
                                 },
-                                "external": {
-                                    "allowance": false,
-                                    "approvalRequired": false
+                                "invokation": {
+                                    "owner": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    },
+                                    "set": {
+                                        "allowance": false,
+                                        "approvalRequired": false,
+                                        "invokers": [
+                                        ]
+                                    },
+                                    "all": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    },
+                                    "external": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    }
+                                }
+                            },
+                            {
+                                "id": "Record",
+                                "validation": {
+                                    "quorum": 1,
+                                    "validators": [
+                                        "${REGISTRAR_NODE_CONTROLLER_ID}",
+                                        "${PRESIDENT_NODE_CONTROLLER_ID}",
+                                        "${SECRETARY_NODE_CONTROLLER_ID}"
+                                    ]
+                                },
+                                "approval": {
+                                    "quorum": 1,
+                                    "approvers": [
+                                        "${PRESIDENT_NODE_CONTROLLER_ID}"
+                                    ]
+                                },
+                                "invokation": {
+                                    "owner": {
+                                        "allowance": true,
+                                        "approvalRequired": true
+                                    },
+                                    "set": {
+                                        "allowance": false,
+                                        "approvalRequired": false,
+                                        "invokers": [
+                                        ]
+                                    },
+                                    "all": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    },
+                                    "external": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    }
+                                }
+                            },
+                            {
+                                "id": "governance",
+                                "validation": {
+                                    "quorum": 0.5,
+                                    "validators": [
+                                        "${SECRETARY_NODE_CONTROLLER_ID}",
+                                        "${REGISTRAR_NODE_CONTROLLER_ID}",
+                                        "${PRESIDENT_NODE_CONTROLLER_ID}"
+                                    ]
+                                },
+                                "approval": {
+                                    "quorum": 0.5,
+                                    "approvers": [
+                                        "${SECRETARY_NODE_CONTROLLER_ID}",
+                                        "${REGISTRAR_NODE_CONTROLLER_ID}",
+                                        "${PRESIDENT_NODE_CONTROLLER_ID}"
+                                    ]
+                                },
+                                "invokation": {
+                                    "owner": {
+                                        "allowance": true,
+                                        "approvalRequired": true
+                                    },
+                                    "set": {
+                                        "allowance": false,
+                                        "approvalRequired": false,
+                                        "invokers": []
+                                    },
+                                    "all": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    },
+                                    "external": {
+                                        "allowance": false,
+                                        "approvalRequired": false
+                                    }
                                 }
                             }
-                        },
-                        {
-                            "id": "governance",
-                            "validation": {
-                                "quorum": 0.5,
-                                "validators": [
-                                    "${NODEADMIN_CONTROLLER_ID}",
-                                    "${NODEREGIS_CONTROLLER_ID}",
-                                    "${NODEPRESI_CONTROLLER_ID}"
-                                ]
-                            },
-                            "approval": {
-                                "quorum": 0.5,
-                                "approvers": [
-                                    "${NODEADMIN_CONTROLLER_ID}",
-                                    "${NODEREGIS_CONTROLLER_ID}",
-                                    "${NODEPRESI_CONTROLLER_ID}"
-                                ]
-                            },
-                            "invokation": {
-                                "owner": {
-                                    "allowance": true,
-                                    "approvalRequired": true
-                                },
-                                "set": {
-                                    "allowance": false,
-                                    "approvalRequired": false,
-                                    "invokers": []
-                                },
-                                "all": {
-                                    "allowance": false,
-                                    "approvalRequired": false
-                                },
-                                "external": {
-                                    "allowance": false,
-                                    "approvalRequired": false
-                                }
-                            }
-                        }
-                    ]
-                    
+                        ]
+                        
+                    }
                 }
             }
         }
     }
-}

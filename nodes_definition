@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # Fijamos el arranqe de una red de 3 nodos (administrador, registrador y presidente)
-node_name=('nodeadmin1' 'noderegis1' 'nodepresi1')
+node_name=('secretary_node' 'registrar_node' 'president_node')
 num_nodes="${#node_name[@]}"
