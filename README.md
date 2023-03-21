@@ -41,8 +41,7 @@ cd catedraBOB-lacp-taple-network
 
 ### 2. Casos de uso del LACP
 
-2.1. Crear el sujeto: `LACP` ,  y `Record`
-
+2.1. Crear el sujeto: `LACP`
 ```bash
 ./create-lacp.sh
 ```
@@ -56,7 +55,8 @@ cd catedraBOB-lacp-taple-network
 2.3. Crear el sujeto `Record`, modificarlo por el propietario y aprobar la modificación por alguien diferente.
 ```bash
 ./create-record.sh
-./modify-record-by-owner.sh
+./modify-record-by-owner-request.sh
+./modify-record-by-owner-approval.sh
 ```
 
 ## Parada   
