@@ -69,17 +69,15 @@ cd catedraBOB-lacp-taple-network
 
 ### Estructuras de datos
 `LACP`. Modela el Libro de Actas de la Comunidad de Propietarios.
-- lacp_id: Identificador interno.
 - community_name: Nombre de la comunidad.
 - community_address: Dirección de la comunidad.
 - president_name: Nombre del presidente de la comunidad.
 - president_contact: Contacto del presidente.
 - secretary_name: Nombre del secretario de la comunidad.
 - secretary_contact: Contacto del secretario.
-- diligence_id: Referencia al identificador de la diligencia asociada al LACP.
+- diligence_id: Referencia al identificador (Subject ID) de la diligencia asociada al LACP.
 
 `Diligence`. Modela la diligencia asociada a un LACP. 
-- diligence_id: Identificador interno.
 - land_registry_property_number. Número identificador de de la finca registral dentro del Registro de la Propiedad. Ejemplo: "Libro 1127, Sección 2ª, folio 121, finca registral 38013".
 - CRU. Código Registral Único. Identifica inequívocamente a la finca dentro del Registro de la Propiedad
 - inscription. Ordinal de la inscripción.
@@ -88,10 +86,9 @@ cd catedraBOB-lacp-taple-network
 - registrar_area: Área sobre la que actúa el Registrador de la Propiedad. Ej: Madrid 14.
 - observations: Observaciones del registrador al crear la diligencia.
 - lacp_size: Tamaño que otorga la diligencia al libro. Una diligencia rechazada se modela con un tamaño 0.
-- lacp_id: Referencia al identificador interno del LACP al que está asociado esta diligencia.
+- lacp_id: Referencia al identificador (Subject ID) del LACP al que está asociado esta diligencia.
 
 `Record`. Modela un acta de un LACP.
-- record_id: Identificador interno.
 - record_name: Nombre o título del acta.
 - record_start_date_time: Fecha y hora de inicio de la reunión.
 - record_end_date_time: Fecha y hora de finalización de la reunión.
@@ -102,4 +99,4 @@ cd catedraBOB-lacp-taple-network
 - assistants: Lista de asistentes. Además, se pueden especificar sus propiedades y cuotas de participación asociadas.
 - body: Contenido, texto, temas a tratar, etc. en la reunión. Acuerdos adoptados.
 - status: Estado del acta. Puede estar pendiente de aprobación (PENDING), aceptada (APPROVED) o rechazada (DENIED).
-- lacp_id: Referencia al identificador interno del LACP al que está asociado este acta.
+- lacp_id: Referencia al identificador (Subject ID) del LACP al que está asociado el acta.

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export GOBERNANCE_SUBJECT_ID=`cat .gobernance_subject_id`
+export LACP_SUBJECT_ID=`cat .lacp_id`
 
 envsubst < templates/create-record.json.tmpl > temp-create-record.json
 

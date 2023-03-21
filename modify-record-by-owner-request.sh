@@ -5,6 +5,7 @@
 # La aprobación del cambio la hace el nodo del presidente. 
 
 export RECORD_ID=`cat .record_id`
+export LACP_SUBJECT_ID=`cat .lacp_id`
 
 envsubst < templates/modify-record.json.tmpl > temp-modify-record-by-owner.json
 

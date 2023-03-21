@@ -33,9 +33,6 @@
                             "content": {
                                 "type": "object",                                
                                 "properties": {
-                                    "lacp_id": {
-                                        "type": "integer"
-                                    },
                                     "community_name": {
                                         "type": "string"
                                     },
@@ -54,12 +51,11 @@
                                     "secretary_contact": {
                                         "type": "string"
                                     },
-                                    "diligence_id": {
-                                        "type": "integer"
+                                    "diligence_subject_id": {
+                                        "type": "string"
                                     }
                                 },
                                 "required": [
-                                    "lacp_id",
                                     "community_name",
                                     "community_address",
                                     "president_name",
@@ -76,9 +72,6 @@
                             "content": {
                                 "type": "object",                                
                                 "properties": {
-                                    "diligence_id": {
-                                        "type": "integer"
-                                    },
                                     "land_registry_property_number": {
                                         "type": "string"
                                     },
@@ -104,12 +97,11 @@
                                     "lacp_size": {
                                         "type": "integer"
                                     },
-                                    "lacp_id": {
-                                        "type": "integer"
+                                    "lacp_subject_id": {
+                                        "type": "string"
                                     }
                                 },
                                 "required": [
-                                    "diligence_id",
                                     "land_registry_property_number",
                                     "CRU",
                                     "inscription",
@@ -117,7 +109,7 @@
                                     "registrar_name",
                                     "registrar_area",
                                     "lacp_size",
-                                    "lacp_id"
+                                    "lacp_subject_id"
                                 ],
                                 "additionalProperties": false
                             }
@@ -128,9 +120,6 @@
                             "content": {
                                 "type": "object",                                
                                 "properties": {
-                                    "record_id": {
-                                        "type": "integer"
-                                    },
                                     "record_name": {
                                         "type": "string"
                                     },
@@ -165,12 +154,11 @@
                                         "type": "string",
                                         "enum": ["PENDING", "APPROVED", "DENIED"]
                                     },
-                                    "lacp_id": {
-                                        "type": "integer"
+                                    "lacp_subject_id": {
+                                        "type": "string"
                                     }
                                 },
                                 "required": [
-                                    "record_id",
                                     "record_name",
                                     "record_start_date_time",
                                     "record_end_date_time",
@@ -179,7 +167,7 @@
                                     "assistants",
                                     "body",
                                     "status",
-                                    "lacp_id"
+                                    "lacp_subject_id"
                                 ],
                                 "additionalProperties": false
                             }
@@ -204,8 +192,8 @@
                             },
                             "invokation": {
                                 "owner": {
-                                    "allowance": true,
-                                    "approvalRequired": true
+                                    "allowance": false,
+                                    "approvalRequired": false
                                 },
                                 "set": {
                                     "allowance": true,

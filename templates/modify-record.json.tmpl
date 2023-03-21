@@ -4,7 +4,7 @@
             "subject_id": "${RECORD_ID}",
             "payload": {
                 "Json": {
-                    "record_id": 1,
+                    "record_id": "$RECORD_SUBJECT_ID",
                     "record_name": "Arreglo de ascensor",
                     "record_start_date_time": "2023-11-20T20:20:00+00:00",
                     "record_end_date_time": "2023-03-20T22:00:00+00:00",
@@ -13,7 +13,7 @@
                     "assistants": "Lista de asistentes...",
                     "body": "Acuerdos aprobados",
                     "status": "APPROVED",
-                    "lacp_id": 1
+                    "lacp_subject_id": "$LACP_SUBJECT_ID"
                 }
             }
         }
