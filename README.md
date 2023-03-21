@@ -13,45 +13,49 @@ Automatización del lanzamiento de la red [Taple](https://www.taple.es/) en un e
 
 ## Ejecución
 
-1. Clonar el repositorio
+### 1. Inicialización de la red TAPLE
+
+1.2. Clonar el repositorio
 
 ```bash 
 git clone https://github.com/Universidad-de-La-Laguna/catedraBOB-lacp-taple-network.git
 ```
 
-2. Acceder a la carpeta raíz del proyecto
+1.2. Acceder a la carpeta raíz del proyecto
 
 ```bash
 cd catedraBOB-lacp-taple-network
 ```
 
-3. Ejecutar el script de inicialización de nodos (tras haber iniciado Docker), y responder a la terminal interactiva
+1.3. Ejecutar el script de inicialización de nodos (tras haber iniciado Docker), y responder a la terminal interactiva
 
 ```bash
 ./start_nodes.sh
 ```
 
-4. Crear la gobernanza
+1.4. Crear la gobernanza
 
 ```bash
 ./create-gobernance.sh
 ```
 
-5. Crear los sujetos de la red: `LACP` , `Diligence` y `Record`
+### 2. Casos de uso del LACP
+
+2.1. Crear el sujeto: `LACP` ,  y `Record`
 
 ```bash
 ./create-lacp.sh
-./create-diligence.sh
-./create-record.sh
 ```
 
-6. Modificar el sujeto tipo `LACP` por alguien diferente al propietario, sin confirmación.
+2.2. Crear el sujeto `Diligence`, y modificar el LACP por el registrador, sin confirmación
 ```bash
+./create-diligence.sh
 ./modify-lacp-by-other.sh
 ```
 
-7. Modificar el sujeto `Record` por el propietario y aprobar la modificación por alguien diferente.
+2.3. Crear el sujeto `Record`, modificarlo por el propietario y aprobar la modificación por alguien diferente.
 ```bash
+./create-record.sh
 ./modify-record-by-owner.sh
 ```
 
