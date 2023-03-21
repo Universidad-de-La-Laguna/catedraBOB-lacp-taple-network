@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# En este caso el Administrador hace un cambio del sujeto
+# En este caso el Secretario hace un cambio del sujeto
 # La política indica que si el que el cambio lo realiza el propietario, se debe aprobar el cambio
 # La aprobación del cambio la hace el nodo del presidente. 
 
-export RECORD_ID=`cat .record_id`
+export RECORD_SUBJECT_ID=`cat .record_id`
 export LACP_SUBJECT_ID=`cat .lacp_id`
 
 envsubst < templates/modify-record.json.tmpl > temp-modify-record-by-owner.json

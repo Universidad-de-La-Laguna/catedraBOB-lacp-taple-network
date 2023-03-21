@@ -13,53 +13,67 @@ Automatización del lanzamiento de la red [Taple](https://www.taple.es/) en un e
 
 ## Ejecución
 
-### 1. Inicialización de la red TAPLE
-
-1.2. Clonar el repositorio
-
+## 0. Requisitos previos
+0.1. Clonar el repositorio de GitHub
 ```bash 
 git clone https://github.com/Universidad-de-La-Laguna/catedraBOB-lacp-taple-network.git
 ```
 
-1.2. Acceder a la carpeta raíz del proyecto
-
+0.2. Acceder a la carpeta raíz del proyecto
 ```bash
 cd catedraBOB-lacp-taple-network
 ```
 
-1.3. Ejecutar el script de inicialización de nodos (tras haber iniciado Docker), y responder a la terminal interactiva
-
+### 1. Inicialización de la red TAPLE
+1.1. Inicializar los nodos (tras haber iniciado Docker), y responder a la terminal interactiva
 ```bash
 ./start_nodes.sh
 ```
 
-1.4. Crear la gobernanza
-
+1.2. Crear la gobernanza
 ```bash
 ./create-gobernance.sh
 ```
 
 ### 2. Casos de uso del LACP
 
-2.1. Crear el sujeto: `LACP`
+2.1. Crear el sujeto `LACP`
 ```bash
 ./create-lacp.sh
 ```
 
-2.2. Crear el sujeto `Diligence`, y modificar el LACP por el registrador, sin confirmación
+2.2. Crear el sujeto `Diligence`, y modificar el LACP por alguien diferente a su propietario (registrador) sin confirmación requerida
 ```bash
 ./create-diligence.sh
 ./modify-lacp-by-other.sh
 ```
 
-2.3. Crear el sujeto `Record`, modificarlo por el propietario y aprobar la modificación por alguien diferente.
+2.3. Crear el sujeto `Record`, modificarlo por el propietario (secretario) y aprobar la modificación por alguien diferente (presidente).
 ```bash
 ./create-record.sh
 ./modify-record-by-owner-request.sh
 ./modify-record-by-owner-approval.sh
 ```
 
-## Parada   
+### 3. Pruebas de seguridad de la red TAPLE
+3.1. Comprobar que sólo el registrador puede modificar un LACP
+```bash
+./create-lacp.sh
+./modify-lacp-error.sh
+```
+
+3.2. Comprobar que sólo el secretario puede modificar actas
+```bash
+./create-record.sh
+./modify-record-request-error.sh
+```
+3.3. Comprobar que sólo el presidente puede aprobar modificaciones de actas
+```bash
+./create-record.sh
+./modify-record-approval-error.sh
+```
+
+## Parar los nodos
 
 ```bash
 ./stop_nodes.sh
