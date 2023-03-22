@@ -59,19 +59,28 @@ cd catedraBOB-lacp-taple-network
 3.1. Comprobar que sólo el registrador puede modificar un LACP
 ```bash
 ./create-lacp.sh
+./create-diligence.sh
 ./modify-lacp-error.sh
 ```
+> Nota: El script debe tener como salida dos errores (uno por intento de modificación del presidente y otro del secretario)
 
 3.2. Comprobar que sólo el secretario puede modificar actas
+
 ```bash
 ./create-record.sh
 ./modify-record-request-error.sh
 ```
+
+> Nota: El script debe tener como salida dos errores (uno por intento de modificación del presidente y otro del registrador)
+
 3.3. Comprobar que sólo el presidente puede aprobar modificaciones de actas
+
 ```bash
 ./create-record.sh
 ./modify-record-approval-error.sh
 ```
+
+> Nota: El script debe tener como salida dos errores (uno por intento de modificación del registrador y otro del secretario)
 
 ## Parar los nodos
 

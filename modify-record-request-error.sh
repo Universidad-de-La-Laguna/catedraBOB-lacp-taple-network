@@ -26,12 +26,3 @@ MODIFY_RECORD_REQUEST=`curl --silent --location --request POST 'http://localhost
 --data @temp-modify-record-by-owner.json`
 
 echo $MODIFY_RECORD_REQUEST
-
-echo "El secretario intenta modificar un acta..."
-
-MODIFY_RECORD_REQUEST=`curl --silent --location --request POST 'http://localhost:3000/api/requests' \
---header 'X-API-KEY: 1234' \
---header 'Content-Type: application/json' \
---data @temp-modify-record-by-owner.json`
-
-echo $MODIFY_RECORD_REQUEST | jq

@@ -40,15 +40,4 @@ MODIFY_LACP_SUBJECT_REQUEST=`curl --silent --location --request POST 'http://loc
 
 echo $MODIFY_LACP_SUBJECT_REQUEST
 
-# El registrador firma la solicitud de modificacion del sujeto
-./bin/taple-sign $REGISTRAR_NODE_PRIVATE_KEY "$REQUEST_TO_SIGN" > temp-modify-lacp-signed.json
-
-echo "Enviando solicitud de cambio con firma del registrador a nodo ${node_name[0]}"
-
-MODIFY_LACP_SUBJECT_REQUEST=`curl --silent --location --request POST 'http://localhost:3000/api/requests' \
---header 'X-API-KEY: 1234' \
---header 'Content-Type: application/json' \
---data @temp-modify-lacp-signed.json`
-
-echo $MODIFY_LACP_SUBJECT_REQUEST | jq
 
