@@ -55,6 +55,12 @@ cd catedraBOB-lacp-taple-network
 ./modify-record-by-owner-approval.sh
 ```
 
+2.4. Visualizar los sujetos de la red: `Diligence`, `LACP` y `Record` por parte de un comunero, 
+además de la propia gobernanza de la red.
+```bash
+./view-subjects.sh
+```
+
 ### 3. Pruebas de seguridad de la red TAPLE
 3.1. Comprobar que sólo el registrador puede modificar un LACP
 ```bash

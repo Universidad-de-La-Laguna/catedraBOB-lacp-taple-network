@@ -14,6 +14,8 @@ source nodes_definition
 export SECRETARY_NODE_CONTROLLER_ID=`cat .credentials.${node_name[0]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
 export REGISTRAR_NODE_CONTROLLER_ID=`cat .credentials.${node_name[1]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
 export PRESIDENT_NODE_CONTROLLER_ID=`cat .credentials.${node_name[2]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
+export COMMONER_NODE_CONTROLLER_ID=`cat .credentials.${node_name[3]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
+
 envsubst < templates/lacp-gobernance.json.tmpl > temp-lacp-gobernance.json
 
 # Creacion de la gobernanza
