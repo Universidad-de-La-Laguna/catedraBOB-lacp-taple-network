@@ -16,16 +16,16 @@ export REGISTRAR_NODE_CONTROLLER_ID=`cat .credentials.${node_name[1]} | sed -n '
 export PRESIDENT_NODE_CONTROLLER_ID=`cat .credentials.${node_name[2]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
 export COMMONER_NODE_CONTROLLER_ID=`cat .credentials.${node_name[3]} | sed -n 's/^CONTROLLER_ID: \(.*\)$/\1/p'`
 
-envsubst < templates/lacp-gobernance.json.tmpl > temp-lacp-gobernance.json
+envsubst < templates/lacp-governance.json.tmpl > temp-lacp-governance.json
 
 # Creacion de la gobernanza
-CREATE_GOBERNANCE_RESULT=`curl -s --location --request POST 'http://localhost:3000/api/requests' \
+CREATE_GOVERNANCE_RESULT=`curl -s --location --request POST 'http://localhost:3000/api/requests' \
 --header 'X-API-KEY;' \
 --header 'Content-Type: application/json' \
---data @temp-lacp-gobernance.json`
+--data @temp-lacp-governance.json`
 
-GOBERNANCE_SUBJECT_ID=`jq -r .subject_id <<< $CREATE_GOBERNANCE_RESULT`
+GOVERNANCE_SUBJECT_ID=`jq -r .subject_id <<< $CREATE_GOVERNANCE_RESULT`
 
-echo "Gobernanza creada correctamente con subject_id: $GOBERNANCE_SUBJECT_ID"
+echo "Gobernanza creada correctamente con subject_id: $GOVERNANCE_SUBJECT_ID"
 
-echo -n $GOBERNANCE_SUBJECT_ID > .gobernance_subject_id
+echo -n $GOVERNANCE_SUBJECT_ID > .governance_subject_id

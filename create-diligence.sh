@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export GOBERNANCE_SUBJECT_ID=`cat .gobernance_subject_id`
+export GOVERNANCE_SUBJECT_ID=`cat .governance_subject_id`
 export LACP_SUBJECT_ID=`cat .lacp_id`
 
 envsubst < templates/create-diligence.json.tmpl > temp-create-diligence.json

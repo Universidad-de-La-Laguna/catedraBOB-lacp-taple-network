@@ -32,7 +32,7 @@ cd catedraBOB-lacp-taple-network
 
 1.2. Crear la gobernanza
 ```bash
-./create-gobernance.sh
+./create-governance.sh
 ```
 
 ### 2. Casos de uso del LACP
