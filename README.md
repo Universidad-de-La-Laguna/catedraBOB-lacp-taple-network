@@ -1,6 +1,6 @@
 # Catedra BOB - LACP - Taple Network
 
-Automatización del lanzamiento de la red [Taple](https://www.taple.es/) en un entorno local con docker-compose, para el proyecto de **Libro de Actas de la Comunidad de Propietarios**.
+Automatización del lanzamiento de la red [Taple](https://www.taple.es/) en un entorno local para el proyecto de **Libro de Actas de la Comunidad de Propietarios**.
 
 ## Requisitos
 
